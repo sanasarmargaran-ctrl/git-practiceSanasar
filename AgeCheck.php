@@ -1,2 +1,2 @@
 ﻿<?php
-function isAdult($age) { return $age >= 18; }
+function isAdult($age) { return ((int)$age) >= 18; }
