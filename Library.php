@@ -1,8 +1,10 @@
 ﻿<?php
 require_once 'Book.php';
+require_once 'LibraryUser.php';
 
 class Library {
     protected $books = [];
+    protected $users = [];
 
     public function addBook(Book $book) {
         $this->books[$book->id] = $book;
@@ -26,5 +28,9 @@ class Library {
             }
         }
         return $found;
+    }
+
+    public function addUser(LibraryUser $user) {
+        $this->users[$user->id] = $user;
     }
 }
