@@ -6,3 +6,4 @@ function isAdult($age) {
 }
 // run check
 // run check 2
+// run check 3
