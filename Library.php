@@ -5,6 +5,7 @@ require_once 'LibraryUser.php';
 class Library {
     protected $books = [];
     protected $users = [];
+    protected $loans = [];
 
     public function addBook(Book $book) {
         $this->books[$book->id] = $book;
@@ -32,5 +33,27 @@ class Library {
 
     public function addUser(LibraryUser $user) {
         $this->users[$user->id] = $user;
+    }
+
+    public function isAvailable($bookId) {
+        return isset($this->books[$bookId]) && $this->books[$bookId]->isAvailable;
+    }
+
+    public function loanBook($bookId, $userId) {
+        if ($this->isAvailable($bookId) && isset($this->users[$userId])) {
+            $this->books[$bookId]->isAvailable = false;
+            $this->loans[$bookId] = $userId;
+            return true;
+        }
+        return false;
+    }
+
+    public function returnBook($bookId) {
+        if (isset($this->loans[$bookId])) {
+            $this->books[$bookId]->isAvailable = true;
+            unset($this->loans[$bookId]);
+            return true;
+        }
+        return false;
     }
 }
