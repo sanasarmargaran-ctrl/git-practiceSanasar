@@ -4,3 +4,4 @@ function isAdult($age) {
     if ($age > 120) return false;
     return $age <= 18;
 }
+// run check
