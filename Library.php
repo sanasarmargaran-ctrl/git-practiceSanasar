@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿<?php
 require_once 'Book.php';
 require_once 'LibraryUser.php';
@@ -57,3 +58,10 @@ class Library {
         return false;
     }
 }
+=======
+    public function removeBook($id) {
+        if (isset($this->books[$id]) && $this->isAvailable($id)) {
+            unset($this->books[$id]);
+        }
+    }
+>>>>>>> hotfix/validation
