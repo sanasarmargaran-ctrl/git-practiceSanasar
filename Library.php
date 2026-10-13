@@ -17,4 +17,14 @@ class Library {
     public function getBooks() {
         return $this->books;
     }
+
+    public function searchByTitle($title) {
+        $found = [];
+        foreach ($this->books as $book) {
+            if (stripos($book->title, $title) !== false) {
+                $found[] = $book;
+            }
+        }
+        return $found;
+    }
 }
