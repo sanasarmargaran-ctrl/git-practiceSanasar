@@ -1,6 +1,9 @@
 ﻿<?php
-class SearchEngine {
-    public function find($query, array $items) {
-        return array_filter($items, fn($item) => stripos($item, $query) !== false);
+interface SearchInterface {
+    public function search(string $term): array;
+}
+class SearchEngine implements SearchInterface {
+    public function search(string $term): array {
+        return [];
     }
 }
